@@ -1,0 +1,2918 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A local classroom lab with playable explanations of linear regression, decision trees, random forests, and PCA.">
+  <title>Carless · Models in motion</title>
+  <style>:root{color-scheme:light;--ink:#172e45;--muted:#65737f;--blue:#234dde;--navy:#15345c;--teal:#008b80;--orange:#dc742d;--line:#dce3e5;--paper:#f6f8f7;--white:#fff;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-synthesis:none}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink)}button,input,select{font:inherit}button,select,summary,input[type=range]{cursor:pointer}button{color:inherit}button:focus-visible,a:focus-visible,select:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid #648bff;outline-offset:4px}a{color:var(--blue)}.site-header{max-width:1360px;margin:auto;padding:25px 40px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line)}.brand{display:flex;align-items:center;gap:4px;font-size:27px;font-weight:750;letter-spacing:-1px;text-decoration:none;color:var(--ink)}.brand-dot{width:6px;height:6px;background:var(--teal);border-radius:50%;align-self:flex-end;margin-bottom:5px}.course{font-size:11px;letter-spacing:1.5px;font-weight:650}.course span{margin:0 14px;color:#a2adb5}main{max-width:1360px;margin:auto;padding:0 40px}.intro{display:flex;align-items:flex-end;justify-content:space-between;padding:37px 0 29px;gap:24px}.eyebrow{font-size:10px;letter-spacing:2px;font-weight:750;color:var(--teal);margin:0 0 12px}h1{font-size:clamp(38px,4.5vw,60px);font-weight:600;line-height:1.04;letter-spacing:-2.5px;margin:0}.intro-copy{font-size:17px;line-height:1.6;color:var(--muted);margin:0 0 3px}.model-tabs{display:flex;gap:30px;border-bottom:1px solid var(--line);margin-bottom:25px}.model-tabs button{border:0;border-bottom:3px solid transparent;background:none;padding:17px 0 14px;font-weight:550;font-size:15px;color:var(--muted);display:flex;gap:10px;align-items:center}.model-tabs button[aria-selected=true]{color:var(--blue);border-color:var(--blue)}.tab-mark{font-size:21px;line-height:1;width:22px;font-weight:400}.lab{display:grid;grid-template-columns:minmax(0,1fr) 308px;gap:32px;align-items:start}.visual-column{background:white;border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:0 4px 20px #172e4503}.visual-top{min-height:55px;padding:16px 23px 0;display:flex;justify-content:space-between;align-items:flex-start;gap:15px;font-size:11px;color:var(--muted)}#chart-context{font-weight:600;color:var(--ink)}.legend{display:flex;gap:13px;font-size:10px;flex-wrap:wrap;justify-content:flex-end}.legend span{display:inline-flex;align-items:center;gap:5px}.legend i{width:15px;height:2px;background:var(--navy);display:inline-block}.legend i.dot{height:6px;width:6px;border-radius:50%;background:var(--teal)}.legend i.orange{background:var(--orange)}#chart{display:block;width:100%;height:auto;overflow:visible;font-family:inherit}#chart .axis-label{font-size:12px;fill:var(--muted)}#chart .tick{font-size:11px;fill:#71808c}#chart .grid{stroke:#e9eef0;stroke-width:1}#chart .base{stroke:#b4c0c8;stroke-width:1}#chart .plot-note{font-size:12px;fill:var(--muted)}.player{border-top:1px solid var(--line);padding:14px 23px 18px}.progress-row{display:flex;align-items:center;gap:15px;margin-bottom:14px}input[type=range]{accent-color:var(--blue);height:18px;min-width:0}.progress-row input{flex:1;width:100%;margin:0}.elapsed{font-variant-numeric:tabular-nums;font-size:10px;color:var(--muted);white-space:nowrap}.player-row{display:flex;align-items:center;gap:17px}.play-button{min-width:116px;display:flex;align-items:center;justify-content:center;gap:10px;border:0;border-radius:6px;color:white;background:var(--blue);padding:12px 18px;font-size:13px;font-weight:650}.play-button:hover{background:#163fca}.play-button span:first-child{font-size:10px;min-width:12px}.reset-button{background:none;border:0;padding:11px 3px;color:var(--muted);font-size:12px;display:flex;align-items:center;gap:7px}.reset-button span{font-size:19px}.reset-button:hover{color:var(--blue)}.player-spacer{flex:1}.speed-label{font-size:11px;color:var(--muted);margin-right:-8px}select{border:1px solid var(--line);border-radius:5px;padding:7px 5px 7px 8px;font-size:12px;background:white;color:var(--ink)}.lesson-column{padding:13px 0 0}.lesson-column .eyebrow{font-size:9px}.lesson-column h2{font-size:27px;line-height:1.2;letter-spacing:-.7px;font-weight:600;margin:0 0 14px}.lesson-intro{font-size:13px;line-height:1.7;color:var(--muted);margin:0}.model-controls{font-size:12px;margin:15px 0 0}.check-label{display:flex;align-items:center;gap:7px;color:var(--muted);font-size:11px}.check-label input{accent-color:var(--blue);width:14px;height:14px}.model-controls:empty{display:none}.metric{padding:20px 0 15px;border-bottom:1px solid var(--line);margin:0 0 13px}.metric-label{font-size:11px;font-weight:600;color:var(--muted)}.metric>div{display:flex;align-items:baseline;gap:7px;padding-top:6px}.metric strong{font-size:43px;line-height:1.1;letter-spacing:-1.5px;font-weight:550;font-variant-numeric:tabular-nums}.metric #metric-unit{font-size:12px;color:var(--muted)}.metric p{font-size:11px;line-height:1.5;color:var(--muted);margin:8px 0 0;max-width:280px}.steps{display:flex;flex-direction:column;gap:3px;margin:8px 0 18px}.steps button{display:flex;align-items:center;gap:10px;background:none;border:0;text-align:left;padding:7px 0;font-size:12px;color:var(--muted);border-radius:3px}.steps .step-dot{border:1px solid #bbc6cc;border-radius:50%;width:7px;height:7px;margin-left:1px;flex:none}.steps button.active{color:var(--blue);font-weight:650}.steps button.active .step-dot{border-color:var(--blue);background:var(--blue);box-shadow:0 0 0 3px #234dde13}.steps button.done .step-dot{background:#b6c5c3;border-color:#b6c5c3}.explanation{border-left:2px solid var(--teal);padding:2px 0 2px 15px;min-height:106px}.explanation-label{color:var(--teal);font-size:9px;letter-spacing:1.4px;font-weight:750}.explanation p{font-size:12px;line-height:1.7;margin:7px 0 0;color:#465e6a}.below-lab{display:grid;grid-template-columns:minmax(0,1fr) 308px;gap:32px;margin:13px 0 30px;color:var(--muted);font-size:10px;line-height:1.6}.below-lab p{margin:0}.play-hint{font-style:italic}.concepts{display:grid;grid-template-columns:1fr 1fr 1fr;gap:43px;border-top:1px solid var(--line);padding:25px 0 28px}.concepts h3{font-size:12px;font-weight:650;margin:0 0 8px}.concepts p{font-size:12px;line-height:1.7;color:var(--muted);margin:0}.input-row{margin-bottom:12px}.input-row>label{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--muted)}.input-row output{font-size:12px;font-weight:650;color:var(--ink);font-variant-numeric:tabular-nums}.input-row input{width:100%;margin:4px 0 0}footer{display:flex;justify-content:space-between;align-items:flex-start;font-size:10px;color:var(--muted);border-top:1px solid var(--line);padding:20px 0 25px;gap:24px}footer details{max-width:480px;text-align:right}footer details p{text-align:left;line-height:1.7;margin-top:12px}footer summary{color:var(--muted)}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(min-width:1450px){.site-header{padding-top:30px;padding-bottom:30px}.intro{padding-top:45px;padding-bottom:37px}.lab{grid-template-columns:minmax(0,1fr) 330px;gap:38px}.below-lab{grid-template-columns:minmax(0,1fr) 330px;gap:38px}.lesson-column h2{font-size:30px}.lesson-intro{font-size:14px}.explanation p{font-size:13px}}
+@media(max-width:1000px){.lab{grid-template-columns:minmax(0,1fr) 270px;gap:22px}main,.site-header{padding-left:25px;padding-right:25px}.lesson-column h2{font-size:24px}.intro-copy{font-size:15px}.visual-top{padding-left:16px;padding-right:16px;font-size:10px;flex-wrap:wrap}.legend{justify-content:flex-start}.below-lab{grid-template-columns:minmax(0,1fr) 270px;gap:22px}}
+@media(max-width:760px){main,.site-header{padding-left:19px;padding-right:19px}.site-header{padding-top:20px;padding-bottom:20px}.course{font-size:9px;letter-spacing:.6px}.course span{margin:0 7px}.intro{padding-top:30px;padding-bottom:23px;display:block}.intro-copy{margin-top:15px;font-size:14px;line-height:1.5}.intro-copy br{display:none}h1{font-size:42px;letter-spacing:-1.8px}.eyebrow{font-size:9px}.model-tabs{gap:21px;margin-bottom:20px;justify-content:space-between}.model-tabs button{font-size:12px;gap:5px;padding-top:12px}.tab-mark{display:none}.lab{display:flex;flex-direction:column;gap:24px}.visual-column{width:100%}.visual-top{min-height:58px;padding:14px 15px 0;gap:8px}.legend{font-size:9px;gap:10px}.player{padding:12px 15px 15px}.player-row{gap:13px}.play-button{min-width:105px;font-size:12px}.speed-label{display:none}.lesson-column{padding:0;display:grid;grid-template-columns:1fr 1fr;gap:0 20px;width:100%}.lesson-column>.eyebrow,.lesson-column>h2,.lesson-intro,.model-controls{grid-column:1/-1}.lesson-column h2{font-size:27px;margin-bottom:9px}.lesson-intro{font-size:13px}.model-controls{margin-top:12px}.metric{grid-column:1;padding:15px 0 10px;border:0;margin:0}.metric strong{font-size:36px}.metric p{font-size:10px}.steps{grid-column:2;grid-row:auto;margin:18px 0 10px}.explanation{grid-column:1/-1;min-height:0;margin-top:8px}.below-lab{display:block;margin-top:22px;margin-bottom:24px}.play-hint{display:none}.concepts{grid-template-columns:1fr;gap:21px;padding-top:23px}.concepts p{max-width:60ch}.input-row{display:inline-block;width:47%;vertical-align:top}.input-row+.input-row{margin-left:5%}footer{font-size:9px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+/* Let four model tabs wrap on phones, and preserve readable tree labels when swiping. */
+@media(max-width:760px){.model-tabs{display:grid;grid-template-columns:1fr 1fr;gap:0 18px}.model-tabs button{justify-content:center}.visual-column:has(.forest-chart){overflow-x:auto}.forest-chart{min-width:640px}.visual-column:has(.forest-chart) .player{position:sticky;left:0}.visual-column:has(.forest-chart) .visual-top{position:sticky;left:0}}
+/* Keep the animation and its Play button visible on ordinary classroom laptops. */
+@media(min-width:761px){
+  .site-header{padding-top:18px;padding-bottom:18px}
+  .intro{padding-top:24px;padding-bottom:22px}
+  h1{font-size:48px}
+  .model-tabs{margin-bottom:20px}
+  #chart{height:clamp(330px,42vh,450px);width:100%}
+}
+@media(max-width:760px){
+  #chart .axis-label{font-size:20px}
+  #chart .tick{font-size:18px}
+  #chart .plot-note{font-size:16px}
+  #chart .node-detail{font-size:13px}
+  #chart .node-title{font-size:21px}
+}
+</style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#main" aria-label="Carless model lab">carless<span class="brand-dot"></span></a>
+    <span class="course">DUKE <span>/</span> DESIGNTK 530</span>
+  </header>
+  <main id="main">
+    <div class="intro">
+      <div><p class="eyebrow">THE MODEL LAB</p><h1>Models in motion.</h1></div>
+      <p class="intro-copy">Watch models learn patterns<br>and turn inputs into answers.</p>
+    </div>
+    <nav class="model-tabs" role="tablist" aria-label="Choose a model">
+      <button id="tab-linear" role="tab" aria-selected="true" aria-controls="lab" data-model="linear"><span class="tab-mark">╱</span> Linear regression</button>
+      <button id="tab-tree" role="tab" aria-selected="false" aria-controls="lab" data-model="tree" tabindex="-1"><span class="tab-mark">⑂</span> Decision tree</button>
+      <button id="tab-forest" role="tab" aria-selected="false" aria-controls="lab" data-model="forest" tabindex="-1"><span class="tab-mark">⋔</span> Random forest</button>
+      <button id="tab-pca" role="tab" aria-selected="false" aria-controls="lab" data-model="pca" tabindex="-1"><span class="tab-mark">↗</span> PCA</button>
+    </nav>
+
+    <section id="lab" class="lab" role="tabpanel" aria-labelledby="tab-linear">
+      <div class="visual-column">
+        <div class="visual-top"><span id="chart-context">Six actual listings</span><div id="legend" class="legend"></div></div>
+        <svg id="chart" viewBox="0 0 800 520" role="img" aria-labelledby="chart-title chart-description"></svg>
+        <div class="player">
+          <div class="progress-row"><label class="sr-only" for="progress">Animation progress</label><input id="progress" type="range" min="0" max="1000" value="0" step="1"><span id="elapsed" class="elapsed">0:00 / 0:14</span></div>
+          <div class="player-row">
+            <button id="play" class="play-button"><span id="play-icon" aria-hidden="true">▶</span><span id="play-label">Play</span></button>
+            <button id="reset" class="reset-button"><span aria-hidden="true">↺</span> Reset</button>
+            <span class="player-spacer"></span>
+            <label class="speed-label" for="speed">Speed</label>
+            <select id="speed" aria-label="Playback speed"><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="2">2×</option></select>
+          </div>
+        </div>
+      </div>
+
+      <aside class="lesson-column">
+        <p id="model-kind" class="eyebrow">PREDICT A NUMBER</p>
+        <h2 id="lesson-title">A line learns the price pattern.</h2>
+        <p id="lesson-intro" class="lesson-intro"></p>
+        <div id="model-controls" class="model-controls"></div>
+        <div class="metric"><span id="metric-label" class="metric-label"></span><div><strong id="metric-value"></strong><span id="metric-unit"></span></div><p id="metric-note"></p></div>
+        <div id="steps" class="steps" aria-label="Animation steps"></div>
+        <div class="explanation"><span class="explanation-label">WHAT WE SEE</span><p id="explanation" aria-live="polite"></p></div>
+      </aside>
+    </section>
+
+    <div class="below-lab"><p id="data-note"></p><p class="play-hint">Press play, or drag the timeline to explore a moment.</p></div>
+    <section class="concepts" aria-label="Understanding this model">
+      <div><h3>What it is</h3><p id="definition"></p></div>
+      <div><h3>When to use it</h3><p id="use-case"></p></div>
+      <div><h3>What to remember</h3><p id="remember"></p></div>
+    </section>
+    <footer><span>Made for the Carless classroom.</span><details><summary>About the data</summary><p>Examples come from the existing Denver classroom CSV, based on Inside Airbnb’s June 30, 2026 release. The tree, forest, and PCA use the same 1,432 training listings as the class slides. The forest animation uses three shallow trees and two inputs for visibility; the notebook’s full forest uses 200 trees and three inputs. Prices are listed nightly USD. The six-point regression is the separate teaching close-up from the notebook. Data: <a href="https://insideairbnb.com/get-the-data/" target="_blank" rel="noopener noreferrer">Inside Airbnb</a>, <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a>. Everything in this lab runs locally in your browser.</p></details></footer>
+  </main>
+  <script>const MODEL_DATA = {
+  "source": {
+    "name": "Inside Airbnb \u00b7 Denver classroom CSV",
+    "date": "June 30, 2026",
+    "trainingRows": 1432,
+    "testRows": 358
+  },
+  "regression": {
+    "points": [
+      {
+        "x": 2,
+        "y": 189.5
+      },
+      {
+        "x": 3,
+        "y": 233.0
+      },
+      {
+        "x": 4,
+        "y": 254.5
+      },
+      {
+        "x": 6,
+        "y": 394.0
+      },
+      {
+        "x": 8,
+        "y": 428.0
+      },
+      {
+        "x": 10,
+        "y": 558.77
+      }
+    ],
+    "reference": {
+      "slope": 45.34663157894736,
+      "intercept": 93.55519298245616,
+      "mse": 367.02113239766066
+    }
+  },
+  "tree": {
+    "nodes": [
+      {
+        "id": 0,
+        "left": 1,
+        "right": 4,
+        "feature": "accommodates",
+        "threshold": 4.5,
+        "price": 386.2081424581002,
+        "samples": 1432
+      },
+      {
+        "id": 1,
+        "left": 2,
+        "right": 3,
+        "feature": "bedrooms",
+        "threshold": 1.5,
+        "price": 248.79098258706443,
+        "samples": 804
+      },
+      {
+        "id": 2,
+        "left": -1,
+        "right": -1,
+        "feature": null,
+        "threshold": -2.0,
+        "price": 224.32332723948812,
+        "samples": 547
+      },
+      {
+        "id": 3,
+        "left": -1,
+        "right": -1,
+        "feature": null,
+        "threshold": -2.0,
+        "price": 300.8680544747082,
+        "samples": 257
+      },
+      {
+        "id": 4,
+        "left": 5,
+        "right": 6,
+        "feature": "accommodates",
+        "threshold": 8.5,
+        "price": 562.1371178343946,
+        "samples": 628
+      },
+      {
+        "id": 5,
+        "left": -1,
+        "right": -1,
+        "feature": null,
+        "threshold": -2.0,
+        "price": 476.2560439560436,
+        "samples": 455
+      },
+      {
+        "id": 6,
+        "left": -1,
+        "right": -1,
+        "feature": null,
+        "threshold": -2.0,
+        "price": 788.0093063583814,
+        "samples": 173
+      }
+    ]
+  },
+  "forest": {
+    "trees": [
+      [
+        {
+          "id": 0,
+          "left": 1,
+          "right": 4,
+          "feature": "bedrooms",
+          "threshold": 2.5,
+          "price": 359.723840782123,
+          "samples": 919
+        },
+        {
+          "id": 1,
+          "left": 2,
+          "right": 3,
+          "feature": "accommodates",
+          "threshold": 3.5,
+          "price": 258.31543877550996,
+          "samples": 629
+        },
+        {
+          "id": 2,
+          "left": -1,
+          "right": -1,
+          "feature": null,
+          "threshold": -2.0,
+          "price": 212.40070135746606,
+          "samples": 286
+        },
+        {
+          "id": 3,
+          "left": -1,
+          "right": -1,
+          "feature": null,
+          "threshold": -2.0,
+          "price": 296.0372118959107,
+          "samples": 343
+        },
+        {
+          "id": 4,
+          "left": 5,
+          "right": 6,
+          "feature": "bedrooms",
+          "threshold": 3.5,
+          "price": 579.5916150442478,
+          "samples": 290
+        },
+        {
+          "id": 5,
+          "left": -1,
+          "right": -1,
+          "feature": null,
+          "threshold": -2.0,
+          "price": 492.0786561264822,
+          "samples": 165
+        },
+        {
+          "id": 6,
+          "left": -1,
+          "right": -1,
+          "feature": null,
+          "threshold": -2.0,
+          "price": 690.851809045226,
+          "samples": 125
+        }
+      ],
+      [
+        {
+          "id": 0,
+          "left": 1,
+          "right": 4,
+          "feature": "accommodates",
+          "threshold": 8.5,
+          "price": 384.7507891061452,
+          "samples": 911
+        },
+        {
+          "id": 1,
+          "left": 2,
+          "right": 3,
+          "feature": "accommodates",
+          "threshold": 4.5,
+          "price": 327.07949019607844,
+          "samples": 814
+        },
+        {
+          "id": 2,
+          "left": -1,
+          "right": -1,
+          "feature": null,
+          "threshold": -2.0,
+          "price": 246.67213675213654,
+          "samples": 518
+        },
+        {
+          "id": 3,
+          "left": -1,
+          "right": -1,
+          "feature": null,
+          "threshold": -2.0,
+          "price": 471.49532894736836,
+          "samples": 296
+        },
+        {
+          "id": 4,
+          "left": 5,
+          "right": 6,
+          "feature": "accommodates",
+          "threshold": 11.5,
+          "price": 853.10050955414,
+          "samples": 97
+        },
+        {
+          "id": 5,
+          "left": -1,
+          "right": -1,
+          "feature": null,
+          "threshold": -2.0,
+          "price": 682.2526027397261,
+          "samples": 51
+        },
+        {
+          "id": 6,
+          "left": -1,
+          "right": -1,
+          "feature": null,
+          "threshold": -2.0,
+          "price": 1001.5754761904761,
+          "samples": 46
+        }
+      ],
+      [
+        {
+          "id": 0,
+          "left": 1,
+          "right": 4,
+          "feature": "accommodates",
+          "threshold": 4.5,
+          "price": 376.18617318435753,
+          "samples": 917
+        },
+        {
+          "id": 1,
+          "left": 2,
+          "right": 3,
+          "feature": "bedrooms",
+          "threshold": 1.5,
+          "price": 249.70066265060228,
+          "samples": 517
+        },
+        {
+          "id": 2,
+          "left": -1,
+          "right": -1,
+          "feature": null,
+          "threshold": -2.0,
+          "price": 223.79927404718703,
+          "samples": 352
+        },
+        {
+          "id": 3,
+          "left": -1,
+          "right": -1,
+          "feature": null,
+          "threshold": -2.0,
+          "price": 300.8535842293907,
+          "samples": 165
+        },
+        {
+          "id": 4,
+          "left": 5,
+          "right": 6,
+          "feature": "bedrooms",
+          "threshold": 4.5,
+          "price": 550.5764950166115,
+          "samples": 400
+        },
+        {
+          "id": 5,
+          "left": -1,
+          "right": -1,
+          "feature": null,
+          "threshold": -2.0,
+          "price": 513.6947627737229,
+          "samples": 364
+        },
+        {
+          "id": 6,
+          "left": -1,
+          "right": -1,
+          "feature": null,
+          "threshold": -2.0,
+          "price": 924.8577777777778,
+          "samples": 36
+        }
+      ]
+    ],
+    "reference": [
+      {
+        "accommodates": 2,
+        "bedrooms": 1,
+        "price": 227.62403738559655
+      },
+      {
+        "accommodates": 2,
+        "bedrooms": 2,
+        "price": 253.3088074463311
+      },
+      {
+        "accommodates": 2,
+        "bedrooms": 3,
+        "price": 346.53479236933646
+      },
+      {
+        "accommodates": 2,
+        "bedrooms": 4,
+        "price": 412.79251000891776
+      },
+      {
+        "accommodates": 2,
+        "bedrooms": 5,
+        "price": 412.79251000891776
+      },
+      {
+        "accommodates": 2,
+        "bedrooms": 6,
+        "price": 412.79251000891776
+      },
+      {
+        "accommodates": 2,
+        "bedrooms": 7,
+        "price": 412.79251000891776
+      },
+      {
+        "accommodates": 2,
+        "bedrooms": 8,
+        "price": 412.79251000891776
+      },
+      {
+        "accommodates": 3,
+        "bedrooms": 1,
+        "price": 227.62403738559655
+      },
+      {
+        "accommodates": 3,
+        "bedrooms": 2,
+        "price": 253.3088074463311
+      },
+      {
+        "accommodates": 3,
+        "bedrooms": 3,
+        "price": 346.53479236933646
+      },
+      {
+        "accommodates": 3,
+        "bedrooms": 4,
+        "price": 412.79251000891776
+      },
+      {
+        "accommodates": 3,
+        "bedrooms": 5,
+        "price": 412.79251000891776
+      },
+      {
+        "accommodates": 3,
+        "bedrooms": 6,
+        "price": 412.79251000891776
+      },
+      {
+        "accommodates": 3,
+        "bedrooms": 7,
+        "price": 412.79251000891776
+      },
+      {
+        "accommodates": 3,
+        "bedrooms": 8,
+        "price": 412.79251000891776
+      },
+      {
+        "accommodates": 4,
+        "bedrooms": 1,
+        "price": 255.50287423174476
+      },
+      {
+        "accommodates": 4,
+        "bedrooms": 2,
+        "price": 281.1876442924793
+      },
+      {
+        "accommodates": 4,
+        "bedrooms": 3,
+        "price": 346.53479236933646
+      },
+      {
+        "accommodates": 4,
+        "bedrooms": 4,
+        "price": 412.79251000891776
+      },
+      {
+        "accommodates": 4,
+        "bedrooms": 5,
+        "price": 412.79251000891776
+      },
+      {
+        "accommodates": 4,
+        "bedrooms": 6,
+        "price": 412.79251000891776
+      },
+      {
+        "accommodates": 4,
+        "bedrooms": 7,
+        "price": 412.79251000891776
+      },
+      {
+        "accommodates": 4,
+        "bedrooms": 8,
+        "price": 412.79251000891776
+      },
+      {
+        "accommodates": 5,
+        "bedrooms": 1,
+        "price": 427.075767872334
+      },
+      {
+        "accommodates": 5,
+        "bedrooms": 2,
+        "price": 427.075767872334
+      },
+      {
+        "accommodates": 5,
+        "bedrooms": 3,
+        "price": 492.4229159491911
+      },
+      {
+        "accommodates": 5,
+        "bedrooms": 4,
+        "price": 558.6806335887724
+      },
+      {
+        "accommodates": 5,
+        "bedrooms": 5,
+        "price": 695.7349719234575
+      },
+      {
+        "accommodates": 5,
+        "bedrooms": 6,
+        "price": 695.7349719234575
+      },
+      {
+        "accommodates": 5,
+        "bedrooms": 7,
+        "price": 695.7349719234575
+      },
+      {
+        "accommodates": 5,
+        "bedrooms": 8,
+        "price": 695.7349719234575
+      },
+      {
+        "accommodates": 6,
+        "bedrooms": 1,
+        "price": 427.075767872334
+      },
+      {
+        "accommodates": 6,
+        "bedrooms": 2,
+        "price": 427.075767872334
+      },
+      {
+        "accommodates": 6,
+        "bedrooms": 3,
+        "price": 492.4229159491911
+      },
+      {
+        "accommodates": 6,
+        "bedrooms": 4,
+        "price": 558.6806335887724
+      },
+      {
+        "accommodates": 6,
+        "bedrooms": 5,
+        "price": 695.7349719234575
+      },
+      {
+        "accommodates": 6,
+        "bedrooms": 6,
+        "price": 695.7349719234575
+      },
+      {
+        "accommodates": 6,
+        "bedrooms": 7,
+        "price": 695.7349719234575
+      },
+      {
+        "accommodates": 6,
+        "bedrooms": 8,
+        "price": 695.7349719234575
+      },
+      {
+        "accommodates": 7,
+        "bedrooms": 1,
+        "price": 427.075767872334
+      },
+      {
+        "accommodates": 7,
+        "bedrooms": 2,
+        "price": 427.075767872334
+      },
+      {
+        "accommodates": 7,
+        "bedrooms": 3,
+        "price": 492.4229159491911
+      },
+      {
+        "accommodates": 7,
+        "bedrooms": 4,
+        "price": 558.6806335887724
+      },
+      {
+        "accommodates": 7,
+        "bedrooms": 5,
+        "price": 695.7349719234575
+      },
+      {
+        "accommodates": 7,
+        "bedrooms": 6,
+        "price": 695.7349719234575
+      },
+      {
+        "accommodates": 7,
+        "bedrooms": 7,
+        "price": 695.7349719234575
+      },
+      {
+        "accommodates": 7,
+        "bedrooms": 8,
+        "price": 695.7349719234575
+      },
+      {
+        "accommodates": 8,
+        "bedrooms": 1,
+        "price": 427.075767872334
+      },
+      {
+        "accommodates": 8,
+        "bedrooms": 2,
+        "price": 427.075767872334
+      },
+      {
+        "accommodates": 8,
+        "bedrooms": 3,
+        "price": 492.4229159491911
+      },
+      {
+        "accommodates": 8,
+        "bedrooms": 4,
+        "price": 558.6806335887724
+      },
+      {
+        "accommodates": 8,
+        "bedrooms": 5,
+        "price": 695.7349719234575
+      },
+      {
+        "accommodates": 8,
+        "bedrooms": 6,
+        "price": 695.7349719234575
+      },
+      {
+        "accommodates": 8,
+        "bedrooms": 7,
+        "price": 695.7349719234575
+      },
+      {
+        "accommodates": 8,
+        "bedrooms": 8,
+        "price": 695.7349719234575
+      },
+      {
+        "accommodates": 9,
+        "bedrooms": 1,
+        "price": 497.32819246978653
+      },
+      {
+        "accommodates": 9,
+        "bedrooms": 2,
+        "price": 497.32819246978653
+      },
+      {
+        "accommodates": 9,
+        "bedrooms": 3,
+        "price": 562.6753405466437
+      },
+      {
+        "accommodates": 9,
+        "bedrooms": 4,
+        "price": 628.9330581862249
+      },
+      {
+        "accommodates": 9,
+        "bedrooms": 5,
+        "price": 765.9873965209099
+      },
+      {
+        "accommodates": 9,
+        "bedrooms": 6,
+        "price": 765.9873965209099
+      },
+      {
+        "accommodates": 9,
+        "bedrooms": 7,
+        "price": 765.9873965209099
+      },
+      {
+        "accommodates": 9,
+        "bedrooms": 8,
+        "price": 765.9873965209099
+      },
+      {
+        "accommodates": 10,
+        "bedrooms": 1,
+        "price": 497.32819246978653
+      },
+      {
+        "accommodates": 10,
+        "bedrooms": 2,
+        "price": 497.32819246978653
+      },
+      {
+        "accommodates": 10,
+        "bedrooms": 3,
+        "price": 562.6753405466437
+      },
+      {
+        "accommodates": 10,
+        "bedrooms": 4,
+        "price": 628.9330581862249
+      },
+      {
+        "accommodates": 10,
+        "bedrooms": 5,
+        "price": 765.9873965209099
+      },
+      {
+        "accommodates": 10,
+        "bedrooms": 6,
+        "price": 765.9873965209099
+      },
+      {
+        "accommodates": 10,
+        "bedrooms": 7,
+        "price": 765.9873965209099
+      },
+      {
+        "accommodates": 10,
+        "bedrooms": 8,
+        "price": 765.9873965209099
+      },
+      {
+        "accommodates": 11,
+        "bedrooms": 1,
+        "price": 497.32819246978653
+      },
+      {
+        "accommodates": 11,
+        "bedrooms": 2,
+        "price": 497.32819246978653
+      },
+      {
+        "accommodates": 11,
+        "bedrooms": 3,
+        "price": 562.6753405466437
+      },
+      {
+        "accommodates": 11,
+        "bedrooms": 4,
+        "price": 628.9330581862249
+      },
+      {
+        "accommodates": 11,
+        "bedrooms": 5,
+        "price": 765.9873965209099
+      },
+      {
+        "accommodates": 11,
+        "bedrooms": 6,
+        "price": 765.9873965209099
+      },
+      {
+        "accommodates": 11,
+        "bedrooms": 7,
+        "price": 765.9873965209099
+      },
+      {
+        "accommodates": 11,
+        "bedrooms": 8,
+        "price": 765.9873965209099
+      },
+      {
+        "accommodates": 12,
+        "bedrooms": 1,
+        "price": 603.7691502867032
+      },
+      {
+        "accommodates": 12,
+        "bedrooms": 2,
+        "price": 603.7691502867032
+      },
+      {
+        "accommodates": 12,
+        "bedrooms": 3,
+        "price": 669.1162983635604
+      },
+      {
+        "accommodates": 12,
+        "bedrooms": 4,
+        "price": 735.3740160031417
+      },
+      {
+        "accommodates": 12,
+        "bedrooms": 5,
+        "price": 872.4283543378266
+      },
+      {
+        "accommodates": 12,
+        "bedrooms": 6,
+        "price": 872.4283543378266
+      },
+      {
+        "accommodates": 12,
+        "bedrooms": 7,
+        "price": 872.4283543378266
+      },
+      {
+        "accommodates": 12,
+        "bedrooms": 8,
+        "price": 872.4283543378266
+      },
+      {
+        "accommodates": 13,
+        "bedrooms": 1,
+        "price": 603.7691502867032
+      },
+      {
+        "accommodates": 13,
+        "bedrooms": 2,
+        "price": 603.7691502867032
+      },
+      {
+        "accommodates": 13,
+        "bedrooms": 3,
+        "price": 669.1162983635604
+      },
+      {
+        "accommodates": 13,
+        "bedrooms": 4,
+        "price": 735.3740160031417
+      },
+      {
+        "accommodates": 13,
+        "bedrooms": 5,
+        "price": 872.4283543378266
+      },
+      {
+        "accommodates": 13,
+        "bedrooms": 6,
+        "price": 872.4283543378266
+      },
+      {
+        "accommodates": 13,
+        "bedrooms": 7,
+        "price": 872.4283543378266
+      },
+      {
+        "accommodates": 13,
+        "bedrooms": 8,
+        "price": 872.4283543378266
+      },
+      {
+        "accommodates": 14,
+        "bedrooms": 1,
+        "price": 603.7691502867032
+      },
+      {
+        "accommodates": 14,
+        "bedrooms": 2,
+        "price": 603.7691502867032
+      },
+      {
+        "accommodates": 14,
+        "bedrooms": 3,
+        "price": 669.1162983635604
+      },
+      {
+        "accommodates": 14,
+        "bedrooms": 4,
+        "price": 735.3740160031417
+      },
+      {
+        "accommodates": 14,
+        "bedrooms": 5,
+        "price": 872.4283543378266
+      },
+      {
+        "accommodates": 14,
+        "bedrooms": 6,
+        "price": 872.4283543378266
+      },
+      {
+        "accommodates": 14,
+        "bedrooms": 7,
+        "price": 872.4283543378266
+      },
+      {
+        "accommodates": 14,
+        "bedrooms": 8,
+        "price": 872.4283543378266
+      },
+      {
+        "accommodates": 15,
+        "bedrooms": 1,
+        "price": 603.7691502867032
+      },
+      {
+        "accommodates": 15,
+        "bedrooms": 2,
+        "price": 603.7691502867032
+      },
+      {
+        "accommodates": 15,
+        "bedrooms": 3,
+        "price": 669.1162983635604
+      },
+      {
+        "accommodates": 15,
+        "bedrooms": 4,
+        "price": 735.3740160031417
+      },
+      {
+        "accommodates": 15,
+        "bedrooms": 5,
+        "price": 872.4283543378266
+      },
+      {
+        "accommodates": 15,
+        "bedrooms": 6,
+        "price": 872.4283543378266
+      },
+      {
+        "accommodates": 15,
+        "bedrooms": 7,
+        "price": 872.4283543378266
+      },
+      {
+        "accommodates": 15,
+        "bedrooms": 8,
+        "price": 872.4283543378266
+      },
+      {
+        "accommodates": 16,
+        "bedrooms": 1,
+        "price": 603.7691502867032
+      },
+      {
+        "accommodates": 16,
+        "bedrooms": 2,
+        "price": 603.7691502867032
+      },
+      {
+        "accommodates": 16,
+        "bedrooms": 3,
+        "price": 669.1162983635604
+      },
+      {
+        "accommodates": 16,
+        "bedrooms": 4,
+        "price": 735.3740160031417
+      },
+      {
+        "accommodates": 16,
+        "bedrooms": 5,
+        "price": 872.4283543378266
+      },
+      {
+        "accommodates": 16,
+        "bedrooms": 6,
+        "price": 872.4283543378266
+      },
+      {
+        "accommodates": 16,
+        "bedrooms": 7,
+        "price": 872.4283543378266
+      },
+      {
+        "accommodates": 16,
+        "bedrooms": 8,
+        "price": 872.4283543378266
+      }
+    ],
+    "trainingRows": 1432,
+    "bootstrap": true,
+    "maxFeatures": 1,
+    "maxDepth": 2
+  },
+  "pca": {
+    "points": [
+      {
+        "x": 1.6209575306037427,
+        "y": 0.704286798717686
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.904227867572149
+      },
+      {
+        "x": -1.0494033366088653,
+        "y": -0.904227867572149
+      },
+      {
+        "x": -0.7156082282072893,
+        "y": -0.904227867572149
+      },
+      {
+        "x": 2.288547747406895,
+        "y": 1.5085441318626034
+      },
+      {
+        "x": 0.9533673138005907,
+        "y": 1.5085441318626034
+      },
+      {
+        "x": -1.0494033366088653,
+        "y": -0.904227867572149
+      },
+      {
+        "x": 2.288547747406895,
+        "y": 1.5085441318626034
+      },
+      {
+        "x": 1.6209575306037427,
+        "y": 1.5085441318626034
+      },
+      {
+        "x": 3.6237281810131985,
+        "y": 3.1170587981524385
+      },
+      {
+        "x": 0.9533673138005907,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -1.0494033366088653,
+        "y": -0.904227867572149
+      },
+      {
+        "x": -1.0494033366088653,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -1.0494033366088653,
+        "y": -0.904227867572149
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.904227867572149
+      },
+      {
+        "x": 2.288547747406895,
+        "y": 1.5085441318626034
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": 2.288547747406895,
+        "y": 0.704286798717686
+      },
+      {
+        "x": -0.7156082282072893,
+        "y": -0.904227867572149
+      },
+      {
+        "x": -0.04801801140413731,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.904227867572149
+      },
+      {
+        "x": 0.9533673138005907,
+        "y": 0.704286798717686
+      },
+      {
+        "x": -1.0494033366088653,
+        "y": -0.904227867572149
+      },
+      {
+        "x": 0.2857770969974387,
+        "y": 0.704286798717686
+      },
+      {
+        "x": 0.2857770969974387,
+        "y": 0.704286798717686
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": 0.2857770969974387,
+        "y": 0.704286798717686
+      },
+      {
+        "x": -1.0494033366088653,
+        "y": -0.904227867572149
+      },
+      {
+        "x": -1.0494033366088653,
+        "y": -0.904227867572149
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": 2.9561379642100465,
+        "y": 0.704286798717686
+      },
+      {
+        "x": -0.7156082282072893,
+        "y": -0.904227867572149
+      },
+      {
+        "x": 0.9533673138005907,
+        "y": 1.5085441318626034
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -1.0494033366088653,
+        "y": -0.904227867572149
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": 0.2857770969974387,
+        "y": 0.704286798717686
+      },
+      {
+        "x": -1.0494033366088653,
+        "y": -0.904227867572149
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": 1.6209575306037427,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -1.0494033366088653,
+        "y": -0.904227867572149
+      },
+      {
+        "x": 1.6209575306037427,
+        "y": 2.312801465007521
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.904227867572149
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": 1.2871624222021667,
+        "y": 0.704286798717686
+      },
+      {
+        "x": 0.9533673138005907,
+        "y": 0.704286798717686
+      },
+      {
+        "x": -1.0494033366088653,
+        "y": -0.904227867572149
+      },
+      {
+        "x": 0.6195722053990147,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -1.0494033366088653,
+        "y": -0.904227867572149
+      },
+      {
+        "x": 0.2857770969974387,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": 0.9533673138005907,
+        "y": 1.5085441318626034
+      },
+      {
+        "x": 0.2857770969974387,
+        "y": 0.704286798717686
+      },
+      {
+        "x": -0.04801801140413731,
+        "y": -0.904227867572149
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -1.0494033366088653,
+        "y": -0.904227867572149
+      },
+      {
+        "x": -0.04801801140413731,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.904227867572149
+      },
+      {
+        "x": -0.7156082282072893,
+        "y": -0.904227867572149
+      },
+      {
+        "x": 0.9533673138005907,
+        "y": 0.704286798717686
+      },
+      {
+        "x": 0.2857770969974387,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -1.0494033366088653,
+        "y": -0.904227867572149
+      },
+      {
+        "x": -0.7156082282072893,
+        "y": -0.904227867572149
+      },
+      {
+        "x": -1.0494033366088653,
+        "y": -0.904227867572149
+      },
+      {
+        "x": -1.0494033366088653,
+        "y": -0.904227867572149
+      },
+      {
+        "x": 0.9533673138005907,
+        "y": 0.704286798717686
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -1.0494033366088653,
+        "y": -0.904227867572149
+      },
+      {
+        "x": -1.0494033366088653,
+        "y": -0.904227867572149
+      },
+      {
+        "x": 0.9533673138005907,
+        "y": 0.704286798717686
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.904227867572149
+      },
+      {
+        "x": -0.04801801140413731,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": 0.2857770969974387,
+        "y": 0.704286798717686
+      },
+      {
+        "x": 3.2899330726116225,
+        "y": 3.921316131297356
+      },
+      {
+        "x": -0.7156082282072893,
+        "y": -0.904227867572149
+      },
+      {
+        "x": 0.2857770969974387,
+        "y": 0.704286798717686
+      },
+      {
+        "x": 1.6209575306037427,
+        "y": 0.704286798717686
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.904227867572149
+      },
+      {
+        "x": 2.9561379642100465,
+        "y": 3.1170587981524385
+      },
+      {
+        "x": 0.9533673138005907,
+        "y": 0.704286798717686
+      },
+      {
+        "x": 0.2857770969974387,
+        "y": 0.704286798717686
+      },
+      {
+        "x": -1.0494033366088653,
+        "y": -0.904227867572149
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": 0.2857770969974387,
+        "y": 0.704286798717686
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -1.0494033366088653,
+        "y": -0.904227867572149
+      },
+      {
+        "x": -1.0494033366088653,
+        "y": -0.904227867572149
+      },
+      {
+        "x": 0.2857770969974387,
+        "y": 0.704286798717686
+      },
+      {
+        "x": 2.288547747406895,
+        "y": 1.5085441318626034
+      },
+      {
+        "x": 0.2857770969974387,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.904227867572149
+      },
+      {
+        "x": 0.9533673138005907,
+        "y": 0.704286798717686
+      },
+      {
+        "x": -0.7156082282072893,
+        "y": -0.904227867572149
+      },
+      {
+        "x": 0.2857770969974387,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -0.7156082282072893,
+        "y": -0.904227867572149
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.904227867572149
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -0.04801801140413731,
+        "y": 0.704286798717686
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": 0.9533673138005907,
+        "y": 1.5085441318626034
+      },
+      {
+        "x": -1.0494033366088653,
+        "y": -0.904227867572149
+      },
+      {
+        "x": 0.9533673138005907,
+        "y": 1.5085441318626034
+      },
+      {
+        "x": 0.9533673138005907,
+        "y": 1.5085441318626034
+      },
+      {
+        "x": -0.04801801140413731,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -0.7156082282072893,
+        "y": -0.904227867572149
+      },
+      {
+        "x": 0.2857770969974387,
+        "y": 0.704286798717686
+      },
+      {
+        "x": 2.9561379642100465,
+        "y": 1.5085441318626034
+      },
+      {
+        "x": 3.6237281810131985,
+        "y": 2.312801465007521
+      },
+      {
+        "x": 0.2857770969974387,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": 0.2857770969974387,
+        "y": 0.704286798717686
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": 1.6209575306037427,
+        "y": 1.5085441318626034
+      },
+      {
+        "x": -1.0494033366088653,
+        "y": -0.904227867572149
+      },
+      {
+        "x": 0.2857770969974387,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -0.04801801140413731,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": 0.2857770969974387,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -1.0494033366088653,
+        "y": -0.904227867572149
+      },
+      {
+        "x": 0.2857770969974387,
+        "y": 0.704286798717686
+      },
+      {
+        "x": 0.9533673138005907,
+        "y": 1.5085441318626034
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.904227867572149
+      },
+      {
+        "x": 3.6237281810131985,
+        "y": 1.5085441318626034
+      },
+      {
+        "x": -1.0494033366088653,
+        "y": -0.904227867572149
+      },
+      {
+        "x": 2.288547747406895,
+        "y": 0.704286798717686
+      },
+      {
+        "x": -0.7156082282072893,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": 0.2857770969974387,
+        "y": 1.5085441318626034
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": 2.288547747406895,
+        "y": 1.5085441318626034
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": 0.2857770969974387,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.904227867572149
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -0.04801801140413731,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.904227867572149
+      },
+      {
+        "x": 0.2857770969974387,
+        "y": 0.704286798717686
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.904227867572149
+      },
+      {
+        "x": 0.9533673138005907,
+        "y": 1.5085441318626034
+      },
+      {
+        "x": 1.6209575306037427,
+        "y": 1.5085441318626034
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": 0.2857770969974387,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -0.04801801140413731,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -1.0494033366088653,
+        "y": -0.904227867572149
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -1.0494033366088653,
+        "y": -0.904227867572149
+      },
+      {
+        "x": -0.04801801140413731,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -0.7156082282072893,
+        "y": -0.904227867572149
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.904227867572149
+      },
+      {
+        "x": -1.0494033366088653,
+        "y": -0.904227867572149
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": 0.9533673138005907,
+        "y": 1.5085441318626034
+      },
+      {
+        "x": -0.04801801140413731,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": 1.2871624222021667,
+        "y": 2.312801465007521
+      },
+      {
+        "x": 0.9533673138005907,
+        "y": 1.5085441318626034
+      },
+      {
+        "x": 0.9533673138005907,
+        "y": 0.704286798717686
+      },
+      {
+        "x": -0.04801801140413731,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": 1.2871624222021667,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -0.04801801140413731,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.904227867572149
+      },
+      {
+        "x": 0.2857770969974387,
+        "y": 0.704286798717686
+      },
+      {
+        "x": 0.9533673138005907,
+        "y": 0.704286798717686
+      },
+      {
+        "x": 0.2857770969974387,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -0.7156082282072893,
+        "y": -0.904227867572149
+      },
+      {
+        "x": 0.9533673138005907,
+        "y": 0.704286798717686
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.904227867572149
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -1.0494033366088653,
+        "y": -0.904227867572149
+      },
+      {
+        "x": 1.6209575306037427,
+        "y": 1.5085441318626034
+      },
+      {
+        "x": -1.0494033366088653,
+        "y": -0.904227867572149
+      },
+      {
+        "x": 1.9547526390053187,
+        "y": 1.5085441318626034
+      },
+      {
+        "x": 0.2857770969974387,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -1.0494033366088653,
+        "y": -0.904227867572149
+      },
+      {
+        "x": 0.2857770969974387,
+        "y": 0.704286798717686
+      },
+      {
+        "x": -1.0494033366088653,
+        "y": -0.904227867572149
+      },
+      {
+        "x": 0.2857770969974387,
+        "y": 0.704286798717686
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -1.0494033366088653,
+        "y": -0.904227867572149
+      },
+      {
+        "x": 0.9533673138005907,
+        "y": 0.704286798717686
+      },
+      {
+        "x": 0.9533673138005907,
+        "y": 0.704286798717686
+      },
+      {
+        "x": -0.7156082282072893,
+        "y": -0.904227867572149
+      },
+      {
+        "x": 2.288547747406895,
+        "y": 1.5085441318626034
+      },
+      {
+        "x": 0.9533673138005907,
+        "y": 1.5085441318626034
+      },
+      {
+        "x": 0.2857770969974387,
+        "y": 0.704286798717686
+      },
+      {
+        "x": 0.9533673138005907,
+        "y": 1.5085441318626034
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": 1.6209575306037427,
+        "y": 1.5085441318626034
+      },
+      {
+        "x": 3.2899330726116225,
+        "y": 3.1170587981524385
+      },
+      {
+        "x": -1.0494033366088653,
+        "y": -0.904227867572149
+      },
+      {
+        "x": -1.0494033366088653,
+        "y": -0.904227867572149
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -0.04801801140413731,
+        "y": -0.904227867572149
+      },
+      {
+        "x": -0.7156082282072893,
+        "y": -0.904227867572149
+      },
+      {
+        "x": 3.6237281810131985,
+        "y": 4.725573464442274
+      },
+      {
+        "x": -0.7156082282072893,
+        "y": -0.904227867572149
+      },
+      {
+        "x": 1.9547526390053187,
+        "y": 1.5085441318626034
+      },
+      {
+        "x": 0.2857770969974387,
+        "y": 0.704286798717686
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.904227867572149
+      },
+      {
+        "x": -1.0494033366088653,
+        "y": -0.904227867572149
+      },
+      {
+        "x": 2.288547747406895,
+        "y": 2.312801465007521
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -0.7156082282072893,
+        "y": -0.904227867572149
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": 0.2857770969974387,
+        "y": 2.312801465007521
+      },
+      {
+        "x": 0.9533673138005907,
+        "y": 2.312801465007521
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.904227867572149
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.904227867572149
+      },
+      {
+        "x": 0.2857770969974387,
+        "y": 0.704286798717686
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": 0.2857770969974387,
+        "y": 1.5085441318626034
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -1.0494033366088653,
+        "y": -0.904227867572149
+      },
+      {
+        "x": -0.7156082282072893,
+        "y": -0.904227867572149
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.904227867572149
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -1.0494033366088653,
+        "y": -0.904227867572149
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -0.04801801140413731,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -0.7156082282072893,
+        "y": -0.904227867572149
+      },
+      {
+        "x": 0.2857770969974387,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -1.0494033366088653,
+        "y": -0.904227867572149
+      },
+      {
+        "x": 0.2857770969974387,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -0.04801801140413731,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": 0.9533673138005907,
+        "y": 1.5085441318626034
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.904227867572149
+      },
+      {
+        "x": -1.0494033366088653,
+        "y": -0.904227867572149
+      },
+      {
+        "x": -0.7156082282072893,
+        "y": -0.904227867572149
+      },
+      {
+        "x": -0.04801801140413731,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -1.0494033366088653,
+        "y": -0.904227867572149
+      },
+      {
+        "x": -1.0494033366088653,
+        "y": -0.904227867572149
+      },
+      {
+        "x": -0.7156082282072893,
+        "y": -0.904227867572149
+      },
+      {
+        "x": -1.0494033366088653,
+        "y": -0.904227867572149
+      },
+      {
+        "x": 0.2857770969974387,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.904227867572149
+      },
+      {
+        "x": -1.0494033366088653,
+        "y": -0.904227867572149
+      },
+      {
+        "x": -0.7156082282072893,
+        "y": -0.904227867572149
+      },
+      {
+        "x": 0.2857770969974387,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": 0.9533673138005907,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": 0.2857770969974387,
+        "y": 0.704286798717686
+      },
+      {
+        "x": -1.0494033366088653,
+        "y": -0.904227867572149
+      },
+      {
+        "x": -0.7156082282072893,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": 0.6195722053990147,
+        "y": 0.704286798717686
+      },
+      {
+        "x": -0.7156082282072893,
+        "y": -0.904227867572149
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": 0.2857770969974387,
+        "y": 0.704286798717686
+      },
+      {
+        "x": 0.2857770969974387,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": 0.9533673138005907,
+        "y": 0.704286798717686
+      },
+      {
+        "x": -1.0494033366088653,
+        "y": -0.904227867572149
+      },
+      {
+        "x": 0.2857770969974387,
+        "y": 0.704286798717686
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": 0.9533673138005907,
+        "y": 0.704286798717686
+      },
+      {
+        "x": -1.0494033366088653,
+        "y": -0.904227867572149
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.904227867572149
+      },
+      {
+        "x": -0.7156082282072893,
+        "y": -0.904227867572149
+      },
+      {
+        "x": 0.2857770969974387,
+        "y": 0.704286798717686
+      },
+      {
+        "x": -1.0494033366088653,
+        "y": -0.904227867572149
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.904227867572149
+      },
+      {
+        "x": 0.6195722053990147,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": 0.9533673138005907,
+        "y": 0.704286798717686
+      },
+      {
+        "x": -0.04801801140413731,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -1.0494033366088653,
+        "y": -0.904227867572149
+      },
+      {
+        "x": -1.0494033366088653,
+        "y": -0.904227867572149
+      },
+      {
+        "x": -0.7156082282072893,
+        "y": -0.904227867572149
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -1.0494033366088653,
+        "y": -0.904227867572149
+      },
+      {
+        "x": 1.6209575306037427,
+        "y": 0.704286798717686
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.904227867572149
+      },
+      {
+        "x": 0.6195722053990147,
+        "y": 0.704286798717686
+      },
+      {
+        "x": 0.2857770969974387,
+        "y": 0.704286798717686
+      },
+      {
+        "x": 0.2857770969974387,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -0.7156082282072893,
+        "y": -0.904227867572149
+      },
+      {
+        "x": 0.6195722053990147,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": 0.2857770969974387,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": 0.2857770969974387,
+        "y": 0.704286798717686
+      },
+      {
+        "x": -1.0494033366088653,
+        "y": -0.904227867572149
+      },
+      {
+        "x": 0.2857770969974387,
+        "y": 0.704286798717686
+      },
+      {
+        "x": -1.0494033366088653,
+        "y": -0.904227867572149
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -1.0494033366088653,
+        "y": -0.904227867572149
+      },
+      {
+        "x": 0.2857770969974387,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": 0.2857770969974387,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": 0.9533673138005907,
+        "y": 1.5085441318626034
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": 3.6237281810131985,
+        "y": 3.1170587981524385
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": 0.9533673138005907,
+        "y": 1.5085441318626034
+      },
+      {
+        "x": 0.2857770969974387,
+        "y": 0.704286798717686
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -1.0494033366088653,
+        "y": -0.904227867572149
+      },
+      {
+        "x": -0.7156082282072893,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": 2.9561379642100465,
+        "y": 3.1170587981524385
+      },
+      {
+        "x": 1.6209575306037427,
+        "y": 1.5085441318626034
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": 0.2857770969974387,
+        "y": 0.704286798717686
+      },
+      {
+        "x": 2.288547747406895,
+        "y": 1.5085441318626034
+      },
+      {
+        "x": 1.6209575306037427,
+        "y": 2.312801465007521
+      },
+      {
+        "x": 1.6209575306037427,
+        "y": 0.704286798717686
+      },
+      {
+        "x": -0.04801801140413731,
+        "y": 0.704286798717686
+      },
+      {
+        "x": -0.04801801140413731,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": 2.9561379642100465,
+        "y": 3.1170587981524385
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -1.0494033366088653,
+        "y": -0.904227867572149
+      },
+      {
+        "x": 1.2871624222021667,
+        "y": 2.312801465007521
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": 0.2857770969974387,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": 0.2857770969974387,
+        "y": 0.704286798717686
+      },
+      {
+        "x": -1.0494033366088653,
+        "y": -0.904227867572149
+      },
+      {
+        "x": 1.6209575306037427,
+        "y": 2.312801465007521
+      },
+      {
+        "x": -0.7156082282072893,
+        "y": 0.704286798717686
+      },
+      {
+        "x": 0.9533673138005907,
+        "y": 1.5085441318626034
+      },
+      {
+        "x": -1.0494033366088653,
+        "y": -0.904227867572149
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.904227867572149
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.904227867572149
+      },
+      {
+        "x": 0.2857770969974387,
+        "y": 0.704286798717686
+      },
+      {
+        "x": -1.0494033366088653,
+        "y": -0.904227867572149
+      },
+      {
+        "x": -0.7156082282072893,
+        "y": -0.904227867572149
+      },
+      {
+        "x": 0.2857770969974387,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": 0.9533673138005907,
+        "y": 0.704286798717686
+      },
+      {
+        "x": 0.2857770969974387,
+        "y": 0.704286798717686
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -1.0494033366088653,
+        "y": -0.904227867572149
+      },
+      {
+        "x": 0.2857770969974387,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": 0.2857770969974387,
+        "y": -0.904227867572149
+      },
+      {
+        "x": -0.04801801140413731,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -1.0494033366088653,
+        "y": -0.904227867572149
+      },
+      {
+        "x": 0.2857770969974387,
+        "y": -0.09997053442723154
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.904227867572149
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.904227867572149
+      },
+      {
+        "x": 0.2857770969974387,
+        "y": 0.704286798717686
+      },
+      {
+        "x": 0.9533673138005907,
+        "y": 1.5085441318626034
+      },
+      {
+        "x": 0.6195722053990147,
+        "y": 0.704286798717686
+      },
+      {
+        "x": -0.7156082282072893,
+        "y": -0.904227867572149
+      },
+      {
+        "x": -1.0494033366088653,
+        "y": -0.904227867572149
+      },
+      {
+        "x": -1.0494033366088653,
+        "y": -0.904227867572149
+      }
+    ],
+    "selected": [
+      {
+        "x": -1.0494033366088653,
+        "y": -0.904227867572149,
+        "capacity": 2,
+        "bedrooms": 1
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.904227867572149,
+        "capacity": 4,
+        "bedrooms": 1
+      },
+      {
+        "x": -0.3818131198057133,
+        "y": -0.09997053442723154,
+        "capacity": 4,
+        "bedrooms": 2
+      },
+      {
+        "x": 0.2857770969974387,
+        "y": 0.704286798717686,
+        "capacity": 6,
+        "bedrooms": 3
+      },
+      {
+        "x": 1.6209575306037427,
+        "y": 1.5085441318626034,
+        "capacity": 10,
+        "bedrooms": 4
+      },
+      {
+        "x": 3.6237281810131985,
+        "y": 3.1170587981524385,
+        "capacity": 16,
+        "bedrooms": 6
+      }
+    ],
+    "covariance": [
+      [
+        0.9999999999999997,
+        0.8806208317227724
+      ],
+      [
+        0.8806208317227724,
+        0.9999999999999997
+      ]
+    ],
+    "direction": [
+      0.7071067811865475,
+      0.7071067811865475
+    ],
+    "varianceRatio": 0.9403104158613863
+  }
+};
+</script>
+  <script>/* Small, explicit calculations used by the animated explanations. No network or libraries. */
+globalThis.ModelMath = (() => {
+  const clamp = (x, low = 0, high = 1) => Math.min(high, Math.max(low, x));
+  const lerp = (a, b, t) => a + (b - a) * t;
+  const ease = (t) => { const u = clamp(t); return u * u * (3 - 2 * u); };
+  const mean = (values) => values.reduce((sum, value) => sum + value, 0) / values.length;
+
+  function regressionFrames(points, count = 50) {
+    // Centering capacity lets the line rotate around the data's average position.
+    const xMean = mean(points.map(p => p.x));
+    const yMean = mean(points.map(p => p.y));
+    const xScale = Math.sqrt(mean(points.map(p => (p.x - xMean) ** 2)));
+    let weight = 0;
+    const frames = [];
+    for (let step = 0; step <= count; step++) {
+      const slope = weight / xScale;
+      const intercept = yMean - slope * xMean;
+      const mse = mean(points.map(p => (slope * p.x + intercept - p.y) ** 2));
+      frames.push({slope, intercept, mse, step});
+      // This is a real gradient-descent update for mean squared error, not a random line motion.
+      const gradient = 2 * mean(points.map(p => ((p.x - xMean) / xScale) * (slope * p.x + intercept - p.y)));
+      weight -= .07 * gradient;
+    }
+    return frames;
+  }
+
+  function lineAt(frames, progress, points) {
+    const position = clamp(progress) * (frames.length - 1);
+    const left = Math.floor(position);
+    const right = Math.min(frames.length - 1, left + 1);
+    const slope = lerp(frames[left].slope, frames[right].slope, position - left);
+    const intercept = lerp(frames[left].intercept, frames[right].intercept, position - left);
+    return {slope, intercept, step: Math.floor(position), mse: mean(points.map(p => (slope * p.x + intercept - p.y) ** 2))};
+  }
+
+  function treeRoute(nodes, inputs) {
+    const path = [0];
+    const answers = [];
+    let node = nodes[0];
+    while (node.left !== -1) {
+      const yes = inputs[node.feature] <= node.threshold;
+      answers.push(yes);
+      node = nodes[yes ? node.left : node.right];
+      path.push(node.id);
+    }
+    return {path, answers, price: node.price, samples: node.samples};
+  }
+
+  function varianceShare(covariance, angle) {
+    const x = Math.cos(angle), y = Math.sin(angle);
+    return (x * x * covariance[0][0] + 2 * x * y * covariance[0][1] + y * y * covariance[1][1]) /
+      (covariance[0][0] + covariance[1][1]);
+  }
+
+  function forestPrediction(trees, inputs) {
+    const routes = trees.map(nodes => treeRoute(nodes, inputs)); // Send the same listing through every tree.
+    return {routes, price: mean(routes.map(route => route.price))}; // Average the original, unrounded prices.
+  }
+
+  function project(point, angle) {
+    const x = Math.cos(angle), y = Math.sin(angle);
+    const score = point.x * x + point.y * y;
+    return {x: score * x, y: score * y, score};
+  }
+
+  function alongPath(points, progress) {
+    const lengths = points.slice(1).map((p, i) => Math.hypot(p.x - points[i].x, p.y - points[i].y));
+    let distance = clamp(progress) * lengths.reduce((a, b) => a + b, 0);
+    for (let i = 0; i < lengths.length; i++) {
+      if (distance <= lengths[i] || i === lengths.length - 1) {
+        return {x: lerp(points[i].x, points[i + 1].x, distance / lengths[i]), y: lerp(points[i].y, points[i + 1].y, distance / lengths[i])};
+      }
+      distance -= lengths[i];
+    }
+    return points[0];
+  }
+
+  return {clamp, lerp, ease, mean, regressionFrames, lineAt, treeRoute, forestPrediction, varianceShare, project, alongPath};
+})();
+</script>
+  <script>(() => {
+  'use strict';
+  const M = globalThis.ModelMath;
+  const $ = (id) => document.getElementById(id);
+  const C = {blue:'#234dde', navy:'#15345c', teal:'#008b80', orange:'#dc742d', ink:'#172e45', muted:'#71808c', line:'#dce3e5'};
+  const money = (value, decimals = 0) => '$' + value.toLocaleString('en-US', {minimumFractionDigits:decimals, maximumFractionDigits:decimals});
+  const number = (value) => value.toLocaleString('en-US', {maximumFractionDigits:0});
+  const frames = M.regressionFrames(MODEL_DATA.regression.points);
+  const targetAngle = Math.atan2(MODEL_DATA.pca.direction[1], MODEL_DATA.pca.direction[0]);
+  const state = {model:'linear', progress:0, playing:false, speed:1, previousTime:null, request:null, capacity:4, bedrooms:2, guides:true, lastPhase:-1};
+  const models = {
+    linear: {
+      duration:14, kind:'PREDICT A NUMBER', title:'A line learns the price pattern.',
+      intro:'Press play to move a flat guess toward a fitted line. Watch the orange price errors get smaller.',
+      context:'Six actual listings', legend:[['dot','Listing'],['','Prediction'],['orange','Price error']],
+      metricLabel:'Average squared price error', unit:'USD²', metricNote:'Each dollar error is squared, then averaged. Lower is better.',
+      steps:['Start with one flat guess','Adjust the line','Reach the fitted line'], jumps:[0,.38,1],
+      definition:'Linear regression predicts a number using a weighted formula. With one input, its predictions form a straight line.',
+      useCase:'A useful first prediction model when you want to explain how an input contributes to the answer.',
+      remember:'A close fit to these six listings does not prove accuracy on new listings. Check predictions on held-out data.',
+      note:'Six CSV records from the notebook’s fitting close-up. This small demonstration is separate from the full price model.'
+    },
+    tree: {
+      duration:10, kind:'PREDICT WITH QUESTIONS', title:'A listing takes a path to a price.',
+      intro:'Choose a listing, then press play. Follow the orange dot as each answer sends it down a branch.',
+      context:'A trained decision tree', legend:[['orange','Selected path'],['','Other branches']],
+      metricLabel:'Predicted nightly price', unit:'', metricNote:'A final group’s average training price becomes the prediction.',
+      steps:['Answer the first question','Answer the next question','Reach a prediction'], jumps:[0,.48,1],
+      definition:'A decision tree follows a sequence of yes/no questions. Each final group supplies a prediction.',
+      useCase:'Useful when cutoffs and combinations of inputs matter. Small trees make the prediction rules easy to follow.',
+      remember:'This animation follows an already-trained tree. A random forest trains many trees and averages their price predictions.',
+      note:'Questions and prices come from the slides’ two-level tree, trained on 1,432 listings. Sliders describe an example to predict.'
+    },
+    forest: {
+      duration:16, kind:'COMBINE SEVERAL TREES', title:'Three trees. One shared prediction.',
+      intro:'Choose a listing and press play. Watch three trees make their own price predictions, then average them.',
+      context:'A small, trained random forest', legend:[['orange','Listing’s path'],['','Other branches']],
+      metricLabel:'Forest’s predicted nightly price', unit:'', metricNote:'Add the three tree predictions and divide by three.',
+      steps:['Send the same listing to each tree','Get three price predictions','Average the predictions'], jumps:[0,.67,1],
+      definition:'A random forest combines many decision trees. To predict a number, it averages their predictions.',
+      useCase:'Useful when prices depend on combinations and cutoffs. Combining varied trees can make predictions more stable than one tree alone.',
+      remember:'Averaging does not guarantee a correct price. Check the forest on listings it did not train on.',
+      note:'Teaching close-up: 3 shallow trees trained on the same 1,432 CSV listings, using capacity and bedrooms. The notebook’s full model uses 200 trees and three inputs.'
+    },
+    pca: {
+      duration:16, kind:'SUMMARIZE THE INPUTS', title:'Two measurements become one score.',
+      intro:'Press play to rotate the axes, project the points, and keep one position for each listing.',
+      context:'Capacity + bedrooms, scaled', legend:[['dot','Listing'],['','Direction'],['orange','Projection']],
+      metricLabel:'Input variation along the blue direction', unit:'%', metricNote:'Variation in scaled capacity and bedrooms, measured on the training data.',
+      steps:['Find the main direction','Project onto that direction','Keep one size score'], jumps:[0,.7,1],
+      definition:'PCA creates new summary columns from related numeric inputs. It learns their shared pattern without an outcome to predict.',
+      useCase:'Use it to explore related measurements, make simpler plots, or reduce repeated information across columns.',
+      remember:'Keeping 94% of input variation is not 94% price accuracy. A size score can hide differences in bedroom layout.',
+      note:'PCA learns from the same 1,432 training listings as the slides. Gray points are test listings; six examples make the projection visible.'
+    }
+  };
+
+  function setText(id, value) { if ($(id).textContent !== value) $(id).textContent = value; }
+  function line(x1, y1, x2, y2, attributes = '') { return `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" ${attributes}/>`; }
+  function text(x, y, value, attributes = '') { return `<text x="${x}" y="${y}" ${attributes}>${value}</text>`; }
+  function dot(x, y, radius, attributes = '') { return `<circle cx="${x}" cy="${y}" r="${radius}" ${attributes}/>`; }
+  function plot(frame) {
+    return {x:v=>frame.left + (v-frame.xmin)/(frame.xmax-frame.xmin)*frame.width,
+            y:v=>frame.top + frame.height - (v-frame.ymin)/(frame.ymax-frame.ymin)*frame.height};
+  }
+  function axes(frame, xTicks, yTicks, xLabel, yLabel, dollars = false) {
+    const p = plot(frame);
+    let out = '';
+    for (const v of yTicks) {
+      out += line(frame.left,p.y(v),frame.left+frame.width,p.y(v),'class="grid"');
+      out += text(frame.left-15,p.y(v)+4,dollars?money(v):v,'class="tick" text-anchor="end"');
+    }
+    for (const v of xTicks) {
+      out += line(p.x(v),frame.top+frame.height,p.x(v),frame.top+frame.height+5,'class="base"');
+      out += text(p.x(v),frame.top+frame.height+24,v,'class="tick" text-anchor="middle"');
+    }
+    out += line(frame.left,frame.top,frame.left,frame.top+frame.height,'class="base"');
+    out += line(frame.left,frame.top+frame.height,frame.left+frame.width,frame.top+frame.height,'class="base"');
+    out += text(frame.left+frame.width/2,frame.top+frame.height+52,xLabel,'class="axis-label" text-anchor="middle"');
+    const tx = frame.left-61, ty = frame.top+frame.height/2;
+    out += text(tx,ty,yLabel,`class="axis-label" text-anchor="middle" transform="rotate(-90 ${tx} ${ty})"`);
+    return out;
+  }
+
+  function renderRegression(progress) {
+    const frame = {left:85,top:48,width:655,height:365,xmin:1.5,xmax:10.5,ymin:100,ymax:650};
+    const p = plot(frame);
+    const fitProgress = Math.pow(M.clamp((progress-.08)/.84), 2.4);
+    const fitted = M.lineAt(frames, fitProgress, MODEL_DATA.regression.points);
+    const predict = x=>fitted.slope*x+fitted.intercept;
+    let out = axes(frame,[2,4,6,8,10],[100,200,300,400,500,600],'Guest capacity','Listed nightly price (USD)',true);
+    if (state.guides) {
+      for (const point of MODEL_DATA.regression.points) {
+        out += line(p.x(point.x),p.y(point.y),p.x(point.x),p.y(predict(point.x)),`stroke="${C.orange}" stroke-width="2"`);
+        out += line(p.x(point.x)-4,p.y(predict(point.x)),p.x(point.x)+4,p.y(predict(point.x)),`stroke="${C.orange}" stroke-width="1.5"`);
+      }
+    }
+    out += line(p.x(1.5),p.y(predict(1.5)),p.x(10.5),p.y(predict(10.5)),`stroke="${C.navy}" stroke-width="3.5" stroke-linecap="round"`);
+    for (const point of MODEL_DATA.regression.points) {
+      out += `<g><title>${point.x} guests: ${money(point.y,2)} recorded nightly price</title>${dot(p.x(point.x),p.y(point.y),6.5,`fill="${C.teal}" stroke="white" stroke-width="2"`)}</g>`;
+    }
+    out += text(740,25,`Prediction = ${money(fitted.slope,2)} × capacity + ${money(fitted.intercept,2)}`,'class="plot-note" text-anchor="end"');
+    out += text(412,495,state.guides?'Orange segments show how many dollars each prediction is off.':'The teal points stay fixed. Only the prediction line moves.','class="plot-note" text-anchor="middle"');
+    const phase = progress < .1 ? 0 : progress < .92 ? 1 : 2;
+    const copy = [
+      'Here we start at about $343 for every listing. The orange segments connect that guess to each recorded price.',
+      'Here we see the line tilt as fitting reduces the squared price errors. The listings stay in place; the predictions change.',
+      'Here we reach the fitted line for these six listings. The orange errors are much smaller, but most predictions still miss the recorded price.'
+    ][phase];
+    return {svg:out, phase, copy, metric:number(fitted.mse), title:'Linear regression fitting a line to six listing prices', description:copy};
+  }
+
+  const positions = {0:{x:400,y:85,w:224,h:78},1:{x:220,y:245,w:210,h:76},4:{x:580,y:245,w:210,h:76},2:{x:115,y:418,w:160,h:76},3:{x:305,y:418,w:160,h:76},5:{x:495,y:418,w:160,h:76},6:{x:685,y:418,w:160,h:76}};
+  function edgePoints(fromId, toId) {
+    const a=positions[fromId], b=positions[toId];
+    const y1=a.y+a.h/2, y2=b.y-b.h/2, middle=(y1+y2)/2;
+    return [{x:a.x,y:y1},{x:a.x,y:middle},{x:b.x,y:middle},{x:b.x,y:y2}];
+  }
+  const pathD = points=>points.map((p,i)=>`${i?'L':'M'} ${p.x} ${p.y}`).join(' ');
+  function renderTree(progress) {
+    const nodes=MODEL_DATA.tree.nodes;
+    const route=M.treeRoute(nodes,{accommodates:state.capacity,bedrooms:state.bedrooms});
+    const first=M.clamp((progress-.17)/.24), second=M.clamp((progress-.58)/.24);
+    const phase=progress < .43 ? 0 : progress < .84 ? 1 : 2;
+    const reached=new Set([route.path[0],...(progress>=.41?[route.path[1]]:[]),...(progress>=.82?[route.path[2]]:[])]);
+    let out='';
+    for(const node of nodes.filter(n=>n.left!==-1)) {
+      for(const [child,yes] of [[node.left,true],[node.right,false]]) {
+        const points=edgePoints(node.id,child);
+        out+=`<path d="${pathD(points)}" fill="none" stroke="#cbd5dc" stroke-width="2"/>`;
+        const isFirst=node.id===route.path[0]&&child===route.path[1];
+        const isSecond=node.id===route.path[1]&&child===route.path[2];
+        const fraction=isFirst?first:isSecond?second:0;
+        if(fraction>0)out+=`<path d="${pathD(points)}" fill="none" stroke="${C.orange}" stroke-width="4" pathLength="1" stroke-dasharray="1" stroke-dashoffset="${1-fraction}"/>`;
+        const a=positions[node.id],b=positions[child];
+        out+=text((a.x+b.x)/2,points[1].y-13,yes?'Yes':'No',`class="branch-label" text-anchor="middle" font-size="14" fill="${fraction>0?C.orange:C.muted}" font-weight="${fraction>0?650:400}"`);
+      }
+    }
+    for(const node of nodes) {
+      const p=positions[node.id], active=reached.has(node.id), leaf=node.left===-1;
+      out+=`<g><rect x="${p.x-p.w/2}" y="${p.y-p.h/2}" width="${p.w}" height="${p.h}" rx="8" fill="${active?C.navy:'#f8fafb'}" stroke="${active?C.navy:'#dce3e5'}" stroke-width="1.2"/>`;
+      const title=leaf?money(node.price):node.feature==='bedrooms'?'Bedrooms ≤ 1?':node.id===0?'Capacity ≤ 4?':'Capacity ≤ 8?';
+      out+=text(p.x,p.y+(leaf?-3:-4),title,`class="node-title" text-anchor="middle" font-size="${leaf?25:20}" font-weight="600" fill="${active?'white':C.ink}"`);
+      out+=text(p.x,p.y+20,leaf?`${node.samples} training listings`:'Yes: left · No: right',`class="node-detail" text-anchor="middle" font-size="11" fill="${active?'#c0d1e1':C.muted}"`);
+      out+='</g>';
+    }
+    if(first>0&&first<1) {const p=M.alongPath(edgePoints(route.path[0],route.path[1]),first);out+=dot(p.x,p.y,8,`fill="${C.orange}" stroke="white" stroke-width="3"`);}
+    if(second>0&&second<1) {const p=M.alongPath(edgePoints(route.path[1],route.path[2]),second);out+=dot(p.x,p.y,8,`fill="${C.orange}" stroke="white" stroke-width="3"`);}
+    out+=text(400,20,`YOUR LISTING: ${state.capacity} GUESTS · ${state.bedrooms} ${state.bedrooms===1?'BEDROOM':'BEDROOMS'}`,`class="tree-input" text-anchor="middle" font-size="12" letter-spacing="1.4" fill="${C.muted}"`);
+    out+=text(400,498,'Each final price is the average of the training listings in that group.','class="plot-note" text-anchor="middle"');
+    const question=nodes[route.path[1]].feature==='bedrooms'?`This listing has ${state.bedrooms} ${state.bedrooms===1?'bedroom':'bedrooms'}. Is that one or fewer?`:`This listing holds ${state.capacity} guests. Is that eight or fewer?`;
+    const copy=phase===0?`Here we ask whether capacity for ${state.capacity} is four or fewer. ${route.answers[0]?'Yes, so this listing goes left.':'No, so this listing goes right.'}`:
+      phase===1?`Here we ask the next question. ${question} ${route.answers[1]?'Yes: follow the left branch.':'No: follow the right branch.'}`:
+      `Here we reach ${route.samples} training listings with an average price of ${money(route.price)} per night. That average becomes this listing’s prediction.`;
+    return {svg:out,phase,copy,metric:phase===2?money(route.price):'—',title:'Decision tree with an animated path for the selected listing',description:copy};
+  }
+
+  function renderForest(progress) {
+    const prediction=M.forestPrediction(MODEL_DATA.forest.trees,{accommodates:state.capacity,bedrooms:state.bedrooms}); // Use the trained trees' real leaf prices.
+    const phase=progress<.22?0:progress<.72?1:2; // Explain the input, individual answers, and average in order.
+    const centers=[138,400,662]; // Give each tree an equal-width column.
+    const arrival=M.clamp((progress-.03)/.17); // Move copies of the same listing into all three trees.
+    const first=M.clamp((progress-.24)/.17), second=M.clamp((progress-.44)/.17); // Trace the two decisions.
+    const combine=M.clamp((progress-.74)/.18); // Carry all three prices to the final average.
+    const ready=progress>=.94; // Reveal the average only after all three prices arrive.
+    let out='';
+    const strokePath=(points,fraction,color=C.orange,width=3)=>`<path d="${pathD(points)}" fill="none" stroke="${color}" stroke-width="${width}" pathLength="1" stroke-dasharray="1" stroke-dashoffset="${1-fraction}"/>`; // Draw a partial route.
+    const movingDot=(points,fraction)=>{const p=M.alongPath(points,fraction);return dot(p.x,p.y,6,`fill="${C.orange}" stroke="white" stroke-width="2"`);}; // Place the moving listing on its route.
+    for(const [treeIndex,nodes] of MODEL_DATA.forest.trees.entries()) {
+      const cx=centers[treeIndex], route=prediction.routes[treeIndex]; // Keep the same listing but follow this tree's questions.
+      const layout={0:{x:cx,y:146,w:146},1:{x:cx-59,y:222,w:110},4:{x:cx+59,y:222,w:110},2:{x:cx-93,y:296,w:58},3:{x:cx-31,y:296,w:58},5:{x:cx+31,y:296,w:58},6:{x:cx+93,y:296,w:58}}; // Lay out a full two-level tree.
+      const edge=(from,to)=>{const a=layout[from],b=layout[to],middle=(a.y+b.y)/2;return [{x:a.x,y:a.y+17},{x:a.x,y:middle},{x:b.x,y:middle},{x:b.x,y:b.y-17}];}; // Connect a question to an answer branch.
+      const inputPath=[{x:400,y:54},{x:400,y:72},{x:cx,y:72},{x:cx,y:129}]; // Send a copy of the listing to each root.
+      out+=`<rect x="${cx-124}" y="86" width="248" height="300" rx="10" fill="#f8fafb" stroke="${C.line}"/>`;
+      out+=strokePath(inputPath,1,C.line,2)+strokePath(inputPath,arrival); // Show the fan-out from one listing.
+      if(arrival>0&&arrival<1)out+=movingDot(inputPath,arrival);
+      out+=text(cx-109,108,`TREE ${treeIndex+1}`,`class="forest-tree-name" font-size="12" font-weight="650" letter-spacing="1" fill="${C.muted}"`);
+      for(const node of nodes.filter(node=>node.left!==-1)) {
+        for(const child of [node.left,node.right]) {
+          const path=edge(node.id,child); // Draw every possible branch before highlighting the chosen one.
+          const fraction=node.id===route.path[0]&&child===route.path[1]?first:node.id===route.path[1]&&child===route.path[2]?second:0;
+          out+=strokePath(path,1,'#cbd5dc',1.5);
+          if(fraction>0)out+=strokePath(path,fraction);
+        }
+      }
+      for(const node of nodes) {
+        const p=layout[node.id],leaf=node.left===-1; // Leaves hold predicted prices; other nodes hold questions.
+        const active=node.id===route.path[0]&&arrival===1||node.id===route.path[1]&&first===1||node.id===route.path[2]&&second===1;
+        const label=leaf?money(node.price):`${node.feature==='bedrooms'?'Bedrooms':'Guests'} ≤ ${Math.floor(node.threshold)}?`; // Inputs are integers, so show easy whole-number cutoffs.
+        out+=`<g><title>${leaf?`Leaf prediction: ${money(node.price,2)} per night`:`${node.feature==='bedrooms'?'Bedrooms':'Guest capacity'}: ${label}`}</title><rect x="${p.x-p.w/2}" y="${p.y-17}" width="${p.w}" height="34" rx="5" fill="${active?C.navy:'white'}" stroke="${active?C.navy:C.line}"/>`;
+        out+=text(p.x,p.y+5,label,`class="forest-node" text-anchor="middle" font-size="${leaf?12:15}" font-weight="${active?600:400}" fill="${active?'white':C.ink}"`);
+        out+='</g>';
+      }
+      out+=text(cx-32,184,'Yes',`text-anchor="middle" font-size="11" fill="${C.muted}"`)+text(cx+32,184,'No',`text-anchor="middle" font-size="11" fill="${C.muted}"`);
+      if(first>0&&first<1)out+=movingDot(edge(route.path[0],route.path[1]),first);
+      if(second>0&&second<1)out+=movingDot(edge(route.path[1],route.path[2]),second);
+      if(second===1)out+=line(layout[route.path[2]].x,313,cx,333,`stroke="${C.orange}" stroke-width="2"`); // Bring the reached leaf's price into the tree's answer box.
+      out+=text(cx,362,second===1?money(route.price,2):'—',`class="forest-price" text-anchor="middle" font-size="25" font-weight="600" fill="${second===1?C.navy:C.muted}"`);
+      const averagePath=[{x:cx,y:386},{x:cx,y:410},{x:400,y:410},{x:400,y:433}]; // Join the three answers at one average.
+      out+=strokePath(averagePath,1,C.line,2);
+      if(combine>0)out+=strokePath(averagePath,combine);
+      if(combine>0&&combine<1)out+=movingDot(averagePath,combine);
+    }
+    out+=`<rect x="222" y="14" width="356" height="40" rx="20" fill="${C.navy}"/>`; // Keep the listing's inputs visible above all three trees.
+    out+=text(400,40,`SAME LISTING: ${state.capacity} guests · ${state.bedrooms} bedrooms`,`class="forest-input" text-anchor="middle" font-size="16" fill="white"`);
+    out+=`<rect x="245" y="433" width="310" height="42" rx="8" fill="${ready?C.blue:'#edf1fa'}"/>`;
+    out+=text(400,460,ready?`Forest average: ${money(prediction.price,2)}`:'Combine the three prices',`class="forest-average" text-anchor="middle" font-size="20" font-weight="600" fill="${ready?'white':C.muted}"`);
+    out+=text(400,505,ready?`(${prediction.routes.map(route=>money(route.price,2)).join(' + ')}) ÷ 3 ≈ ${money(prediction.price,2)}`:'At each question: Yes → left · No → right.',`class="forest-caption" text-anchor="middle" font-size="13" fill="${C.muted}"`);
+    const prices=prediction.routes.map(route=>money(route.price,2)); // Name the measured quantity in each explanation.
+    const copy=[
+      'Here the same listing goes to all three trees. During training, each tree saw a different sample of the listings and random choices of inputs to try.',
+      `Here the trees ask different questions about the same listing. They predict ${prices[0]}, ${prices[1]}, and ${prices[2]} per night. Different trees can give different answers.`,
+      `Here we add the three predicted nightly prices and divide by 3. The forest predicts about ${money(prediction.price,2)} per night. Every tree gets an equal say.`
+    ][phase];
+    return {svg:out,phase,copy,metric:ready?money(prediction.price,2):'—',title:'Random forest sending one listing through three trained trees and averaging their prices',description:copy};
+  }
+
+  function renderPca(progress) {
+    // A square plot gives equal on-screen lengths to one unit on either scaled input axis.
+    const frame={left:220,top:28,width:365,height:365,xmin:-2,xmax:5,ymin:-2,ymax:5};
+    const p=plot(frame);
+    const turn=M.ease((progress-.04)/.49);
+    const angle=targetAngle*turn;
+    const projectionProgress=M.ease((progress-.57)/.22);
+    const stripProgress=M.ease((progress-.83)/.17);
+    const phase=progress<.57?0:progress<.83?1:2;
+    const share=M.varianceShare(MODEL_DATA.pca.covariance,angle);
+    let out=axes(frame,[-2,0,2,4],[-2,0,2,4],'Capacity, scaled','Bedrooms, scaled');
+    out+=`<defs><clipPath id="pca-clip"><rect x="${frame.left}" y="${frame.top}" width="${frame.width}" height="${frame.height}"/></clipPath></defs><g clip-path="url(#pca-clip)">`;
+    for(const point of MODEL_DATA.pca.points)out+=dot(p.x(point.x),p.y(point.y),2.8,`fill="#94a6b4" opacity="${.32*(1-projectionProgress*.8)}"`);
+    const dx=Math.cos(angle)*12,dy=Math.sin(angle)*12;
+    out+=line(p.x(-dx),p.y(-dy),p.x(dx),p.y(dy),`stroke="${C.navy}" stroke-width="3"`);
+    out+=line(p.x(-dy),p.y(dx),p.x(dy),p.y(-dx),`stroke="${C.orange}" stroke-width="2" opacity="${.6*(1-projectionProgress)}"`);
+    for(const point of MODEL_DATA.pca.selected) {
+      const projected=M.project(point,targetAngle);
+      if(state.guides&&projectionProgress>0)out+=line(p.x(point.x),p.y(point.y),p.x(M.lerp(point.x,projected.x,projectionProgress)),p.y(M.lerp(point.y,projected.y,projectionProgress)),`stroke="${C.orange}" stroke-width="1.7"`);
+      out+=dot(p.x(point.x),p.y(point.y),5.5,`fill="${C.teal}" opacity="${1-projectionProgress*.45}"`);
+      if(projectionProgress>0)out+=dot(p.x(M.lerp(point.x,projected.x,projectionProgress)),p.y(M.lerp(point.y,projected.y,projectionProgress)),5,`fill="${C.orange}" opacity="${projectionProgress}"`);
+    }
+    out+='</g>';
+    out+=text(725,55,`${Math.round(angle*180/Math.PI)}°`, `class="angle-label" text-anchor="end" font-size="28" font-weight="500" fill="${C.navy}"`);
+    out+=text(725,78,phase===0?'direction angle':'PC1 direction','class="plot-note" text-anchor="end"');
+    if(stripProgress>0) {
+      const sx=score=>125+(score+2)/7*550;
+      out+=`<g opacity="${stripProgress}">${line(125,476,675,476,`stroke="${C.navy}" stroke-width="2"`)}${text(125,506,'Smaller','class="plot-note"')}${text(400,506,'PC1 size score','class="plot-note" text-anchor="middle"')}${text(675,506,'Larger','class="plot-note" text-anchor="end"')}</g>`;
+      for(const point of MODEL_DATA.pca.selected) {
+        const projected=M.project(point,targetAngle);
+        const x=M.lerp(p.x(projected.x),sx(projected.score),stripProgress);
+        const y=M.lerp(p.y(projected.y),476,stripProgress);
+        out+=dot(x,y,6,`fill="${C.orange}" stroke="white" stroke-width="1.5"`);
+      }
+    } else out+=text(400,486,phase===0?'The blue direction turns toward the largest spread.':'The orange points slide onto the blue direction.','class="plot-note" text-anchor="middle"');
+    const copy=[
+      'Here the blue direction rotates toward the shared size pattern. The percentage rises as that direction captures more variation in capacity and bedrooms.',
+      'Here each highlighted listing slides onto PC1. The orange segment shows the capacity-and-bedroom detail that one size score leaves out.',
+      'Here each listing keeps one position on the size axis. PC1 retains about 94% of input variation; the remaining 6% includes differences in bedroom layout.'
+    ][phase];
+    return {svg:out,phase,copy,metric:(100*share).toFixed(1),title:'PCA rotating axes and projecting listing measurements onto one component',description:copy};
+  }
+
+  function render() {
+    const info=models[state.model];
+    const scene=({linear:renderRegression,tree:renderTree,forest:renderForest,pca:renderPca})[state.model](state.progress);
+    $('chart').innerHTML=`<title id="chart-title">${scene.title}</title><desc id="chart-description">${scene.description}</desc>${scene.svg}`;
+    setText('metric-value',scene.metric);
+    if(state.lastPhase!==scene.phase) {
+      setText('explanation',scene.copy);
+      $('steps').querySelectorAll('button').forEach((button,index)=>{
+        button.classList.toggle('active',index===scene.phase);
+        button.classList.toggle('done',index<scene.phase);
+        if(index===scene.phase)button.setAttribute('aria-current','step');else button.removeAttribute('aria-current');
+      });
+      state.lastPhase=scene.phase;
+    }
+    $('progress').value=Math.round(state.progress*1000);
+    $('progress').setAttribute('aria-valuetext',`${Math.round(state.progress*100)} percent, ${info.steps[scene.phase]}`);
+    const seconds=Math.min(info.duration,Math.floor(state.progress*info.duration));
+    setText('elapsed',`0:${String(seconds).padStart(2,'0')} / 0:${info.duration}`);
+    setText('play-label',state.playing?'Pause':state.progress>=1?'Replay':'Play');
+    setText('play-icon',state.playing?'Ⅱ':state.progress>=1?'↺':'▶');
+    $('play').setAttribute('aria-label',`${state.playing?'Pause':state.progress>=1?'Replay':'Play'} ${{linear:'linear regression',tree:'decision tree',forest:'random forest',pca:'PCA'}[state.model]} animation`);
+  }
+
+  function pause() {
+    state.playing=false;
+    state.previousTime=null;
+    if(state.request!==null)cancelAnimationFrame(state.request);
+    state.request=null;
+  }
+  function seek(progress) {pause();state.progress=M.clamp(progress);render();}
+  function tick(time) {
+    if(!state.playing)return;
+    if(state.previousTime!==null)state.progress=M.clamp(state.progress+Math.min((time-state.previousTime)/1000,.1)*state.speed/models[state.model].duration);
+    state.previousTime=time;
+    if(state.progress>=1)pause();
+    render();
+    if(state.playing)state.request=requestAnimationFrame(tick);
+  }
+  function play() {
+    if(state.playing){pause();render();return;}
+    if(state.progress>=1)state.progress=0;
+    state.playing=true;state.previousTime=null;
+    render();state.request=requestAnimationFrame(tick);
+  }
+  function chooseModel(model) {
+    pause();state.model=model;state.progress=0;state.lastPhase=-1;state.guides=true;
+    const info=models[model];
+    document.querySelectorAll('[data-model]').forEach(button=>{
+      const active=button.dataset.model===model;
+      button.setAttribute('aria-selected',String(active));button.tabIndex=active?0:-1;
+    });
+    $('lab').setAttribute('aria-labelledby',`tab-${model}`);
+    $('chart').classList.toggle('forest-chart',model==='forest');
+    for(const [id,key] of Object.entries({'model-kind':'kind','lesson-title':'title','lesson-intro':'intro','chart-context':'context','metric-label':'metricLabel','metric-unit':'unit','metric-note':'metricNote','definition':'definition','use-case':'useCase','remember':'remember','data-note':'note'}))setText(id,info[key]);
+    $('legend').innerHTML=info.legend.map(([style,label])=>`<span><i class="${style}" aria-hidden="true"></i>${label}</span>`).join('');
+    $('steps').innerHTML=info.steps.map((label,index)=>`<button type="button" data-jump="${info.jumps[index]}" aria-label="Jump to: ${label}"><span class="step-dot" aria-hidden="true"></span>${label}</button>`).join('');
+    $('steps').querySelectorAll('button').forEach(button=>button.addEventListener('click',()=>seek(Number(button.dataset.jump))));
+    if(model==='tree'||model==='forest') {
+      $('model-controls').innerHTML=`<div class="input-row"><label for="capacity">Guest capacity <output id="capacity-value" for="capacity">${state.capacity}</output></label><input id="capacity" type="range" min="2" max="16" step="1" value="${state.capacity}"></div><div class="input-row"><label for="bedrooms">Bedrooms <output id="bedrooms-value" for="bedrooms">${state.bedrooms}</output></label><input id="bedrooms" type="range" min="1" max="8" step="1" value="${state.bedrooms}"></div>`;
+      for(const key of ['capacity','bedrooms'])$(key).addEventListener('input',event=>{
+        state[key]=Number(event.target.value);setText(`${key}-value`,String(state[key]));state.lastPhase=-1;seek(0);
+      });
+    } else {
+      $('model-controls').innerHTML=`<label class="check-label"><input id="guides" type="checkbox" checked> ${model==='linear'?'Show price errors':'Show projection lines'}</label>`;
+      $('guides').addEventListener('change',event=>{state.guides=event.target.checked;render();});
+    }
+    render();
+  }
+
+  $('play').addEventListener('click',play);
+  $('reset').addEventListener('click',()=>seek(0));
+  $('progress').addEventListener('input',event=>seek(Number(event.target.value)/1000));
+  $('speed').addEventListener('change',event=>{state.speed=Number(event.target.value);});
+  const tabs=[...document.querySelectorAll('[data-model]')];
+  tabs.forEach((button,index)=>{
+    button.addEventListener('click',()=>chooseModel(button.dataset.model));
+    button.addEventListener('keydown',event=>{
+      let target;
+      if(event.key==='ArrowRight')target=(index+1)%tabs.length;
+      if(event.key==='ArrowLeft')target=(index+tabs.length-1)%tabs.length;
+      if(event.key==='Home')target=0;
+      if(event.key==='End')target=tabs.length-1;
+      if(target!==undefined){event.preventDefault();tabs[target].focus();chooseModel(tabs[target].dataset.model);}
+    });
+  });
+  document.addEventListener('visibilitychange',()=>{if(document.hidden&&state.playing){pause();render();}});
+  chooseModel('linear');
+})();
+</script>
+</body>
+</html>

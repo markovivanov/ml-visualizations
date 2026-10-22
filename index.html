@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A local classroom lab with playable explanations of linear regression, decision trees, random forests, and PCA.">
+  <title>Carless · Models in motion</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#main" aria-label="Carless model lab">carless<span class="brand-dot"></span></a>
+    <span class="course">DUKE <span>/</span> DESIGNTK 530</span>
+  </header>
+  <main id="main">
+    <div class="intro">
+      <div><p class="eyebrow">THE MODEL LAB</p><h1>Models in motion.</h1></div>
+      <p class="intro-copy">Watch models learn patterns<br>and turn inputs into answers.</p>
+    </div>
+    <nav class="model-tabs" role="tablist" aria-label="Choose a model">
+      <button id="tab-linear" role="tab" aria-selected="true" aria-controls="lab" data-model="linear"><span class="tab-mark">╱</span> Linear regression</button>
+      <button id="tab-tree" role="tab" aria-selected="false" aria-controls="lab" data-model="tree" tabindex="-1"><span class="tab-mark">⑂</span> Decision tree</button>
+      <button id="tab-forest" role="tab" aria-selected="false" aria-controls="lab" data-model="forest" tabindex="-1"><span class="tab-mark">⋔</span> Random forest</button>
+      <button id="tab-pca" role="tab" aria-selected="false" aria-controls="lab" data-model="pca" tabindex="-1"><span class="tab-mark">↗</span> PCA</button>
+    </nav>
+
+    <section id="lab" class="lab" role="tabpanel" aria-labelledby="tab-linear">
+      <div class="visual-column">
+        <div class="visual-top"><span id="chart-context">Six actual listings</span><div id="legend" class="legend"></div></div>
+        <svg id="chart" viewBox="0 0 800 520" role="img" aria-labelledby="chart-title chart-description"></svg>
+        <div class="player">
+          <div class="progress-row"><label class="sr-only" for="progress">Animation progress</label><input id="progress" type="range" min="0" max="1000" value="0" step="1"><span id="elapsed" class="elapsed">0:00 / 0:14</span></div>
+          <div class="player-row">
+            <button id="play" class="play-button"><span id="play-icon" aria-hidden="true">▶</span><span id="play-label">Play</span></button>
+            <button id="reset" class="reset-button"><span aria-hidden="true">↺</span> Reset</button>
+            <span class="player-spacer"></span>
+            <label class="speed-label" for="speed">Speed</label>
+            <select id="speed" aria-label="Playback speed"><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="2">2×</option></select>
+          </div>
+        </div>
+      </div>
+
+      <aside class="lesson-column">
+        <p id="model-kind" class="eyebrow">PREDICT A NUMBER</p>
+        <h2 id="lesson-title">A line learns the price pattern.</h2>
+        <p id="lesson-intro" class="lesson-intro"></p>
+        <div id="model-controls" class="model-controls"></div>
+        <div class="metric"><span id="metric-label" class="metric-label"></span><div><strong id="metric-value"></strong><span id="metric-unit"></span></div><p id="metric-note"></p></div>
+        <div id="steps" class="steps" aria-label="Animation steps"></div>
+        <div class="explanation"><span class="explanation-label">WHAT WE SEE</span><p id="explanation" aria-live="polite"></p></div>
+      </aside>
+    </section>
+
+    <div class="below-lab"><p id="data-note"></p><p class="play-hint">Press play, or drag the timeline to explore a moment.</p></div>
+    <section class="concepts" aria-label="Understanding this model">
+      <div><h3>What it is</h3><p id="definition"></p></div>
+      <div><h3>When to use it</h3><p id="use-case"></p></div>
+      <div><h3>What to remember</h3><p id="remember"></p></div>
+    </section>
+    <footer><span>Made for the Carless classroom.</span><details><summary>About the data</summary><p>Examples come from the existing Denver classroom CSV, based on Inside Airbnb’s June 30, 2026 release. The tree, forest, and PCA use the same 1,432 training listings as the class slides. The forest animation uses three shallow trees and two inputs for visibility; the notebook’s full forest uses 200 trees and three inputs. Prices are listed nightly USD. The six-point regression is the separate teaching close-up from the notebook. Data: <a href="https://insideairbnb.com/get-the-data/" target="_blank" rel="noopener noreferrer">Inside Airbnb</a>, <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a>. Everything in this lab runs locally in your browser.</p></details></footer>
+  </main>
+  <script src="./model-data.js"></script>
+  <script src="./math.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
